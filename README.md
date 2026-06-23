@@ -5,6 +5,7 @@ Train a speaker recognition system using speech embeddings extracted from log-Me
 
 ## Dataset
 VoxCeleb2
+
 Original paper: arxiv.org/pdf/1806.05622
 
 ## Suggested starting models
