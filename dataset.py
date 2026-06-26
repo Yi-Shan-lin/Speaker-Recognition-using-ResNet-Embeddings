@@ -20,7 +20,7 @@ config = {"shortest_duration": 5.0} # (optional)
 builder = Dataset_Builder(dataset, **config)
 builder.filter()
 builder.preprocess()
-dataset = builder.dataset
+dataset = builder.get_datast()
 sample = dataset.take(32)
 """
 
@@ -30,7 +30,6 @@ class Dataset_Builder:
 
     # Data
     dataset: Any = field(init=True)
-    features: Any = field(init=False)
     trans: Tuple[Any, Any] = field(init=False)
 
     # General hyperparameters
@@ -51,8 +50,7 @@ class Dataset_Builder:
     mean: Tuple[float] = (0.485, 0.456, 0.406)# [0.569, 0.569, 0.569] (Approximate VoxCeleb2 mean)
     std: Tuple[float] = (0.229, 0.224, 0.225) # [0.110, 0.110 , 0.110] (Approximate VoxCeleb2 std)
 
-    def __post_init__(self):            
-        self.features = self.dataset.features
+    def __post_init__(self):
 
         input_duration = self.timesteps * self.hop_len / 16000
         print("Duration of cropped log-mel spectograms (input): ", input_duration, " seconds")
@@ -104,14 +102,16 @@ class Dataset_Builder:
             examples["log_mel"] = [mel.numpy() for mel in log_mels]
             return examples
         
-        # Add new features
-        new_features = Features({
-            "log_mel": Array3D(shape=(3, 224,224), dtype="float32")
-        })
-        self.features = Features({**self.features, **new_features})
-
         # Transform audio and resulting log-mel spectograms
-        self.dataset = self.dataset.map(transform, batched=True, batch_size=self.bs, features=self.features)
+        self.dataset = self.dataset.map(transform, batched=True, batch_size=self.bs)
+
+
+    def get_dataset(self):
+        def to_tensor_transform(examples):
+            examples["log_mel"] = [torch.tensor(x, dtype=torch.float32) for x in examples["log_mel"]]
+            return examples
+        
+        return self.dataset.with_transform(to_tensor_transform)
 
     def _get_trans(self):
         audio_transforms = torch.nn.Sequential(
