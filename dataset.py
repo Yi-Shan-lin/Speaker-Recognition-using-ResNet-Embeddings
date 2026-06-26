@@ -15,7 +15,7 @@ from dataset import load_from_disk
 
 
 dataset = load_from_disk("data/dev_dataset")
-config = {"shortest_duration": 3.0} # (optional)
+config = {"shortest_duration": 5.0} # (optional)
 
 builder = Dataset_Builder(dataset, **config)
 builder.filter()
@@ -27,7 +27,7 @@ sample = dataset.take(32)
 @dataclass
 class Dataset_Builder:
     # Defaults
-    
+
     # Data
     dataset: Any = field(init=True)
     features: Any = field(init=False)
