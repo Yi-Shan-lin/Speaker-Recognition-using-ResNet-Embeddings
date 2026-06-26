@@ -34,7 +34,7 @@ class Dataset_Builder:
     trans: Tuple[Any, Any] = field(init=False)
 
     # General hyperparameters
-    shortest_duration: float = 5.0 # Minimum audio duration in seconds
+    shortest_duration: float = 4.0 # Minimum audio duration in seconds
     longest_duration: float = 33.2 # Maximum audio duration in seconds
     bs: int = 32 # Batch size for mapping
     buffer_size: int = 1000 # How shuffled dataset should be when streaming
