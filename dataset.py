@@ -20,7 +20,7 @@ config = {"shortest_duration": 5.0} # (optional)
 builder = Dataset_Builder(dataset, **config)
 builder.filter()
 builder.preprocess()
-dataset = builder.get_datast()
+dataset = builder.get_dataset()
 sample = dataset.take(32)
 """
 
