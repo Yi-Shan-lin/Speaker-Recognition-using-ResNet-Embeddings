@@ -11,8 +11,13 @@ from typing import Any, Tuple
 Usage example:
 
 from dataset import Dataset_Builder
+from dataset import load_from_disk
 
-builder = Dataset_Builder()
+
+dataset = load_from_disk("data/dev_dataset")
+config = {"shortest_duration": 3.0} # (optional)
+
+builder = Dataset_Builder(dataset, **config)
 builder.filter()
 builder.preprocess()
 dataset = builder.dataset
@@ -21,13 +26,18 @@ sample = dataset.take(32)
 
 @dataclass
 class Dataset_Builder:
+    # Defaults
+    
+    # Data
+    dataset: Any = field(init=True)
+    features: Any = field(init=False)
+    trans: Tuple[Any, Any] = field(init=False)
 
     # General hyperparameters
     shortest_duration: float = 5.0 # Minimum audio duration in seconds
     longest_duration: float = 33.2 # Maximum audio duration in seconds
     bs: int = 32 # Batch size for mapping
     buffer_size: int = 1000 # How shuffled dataset should be when streaming
-    dataset_path: str = "data/dev_dataset" # Path to dataset
 
     # Audio hyperparameters
     n_fft: int = 400
@@ -41,13 +51,7 @@ class Dataset_Builder:
     mean: Tuple[float] = (0.485, 0.456, 0.406)# [0.569, 0.569, 0.569] (Approximate VoxCeleb2 mean)
     std: Tuple[float] = (0.229, 0.224, 0.225) # [0.110, 0.110 , 0.110] (Approximate VoxCeleb2 std)
 
-    # Data
-    dataset: Any = field(init=False)
-    features: Any = field(init=False)
-    trans: Tuple[Any, Any] = field(init=False)
-
-    def __post_init__(self):
-        self.dataset = load_from_disk(self.dataset_path)
+    def __post_init__(self):            
         self.features = self.dataset.features
 
         input_duration = self.timesteps * self.hop_len / 16000
