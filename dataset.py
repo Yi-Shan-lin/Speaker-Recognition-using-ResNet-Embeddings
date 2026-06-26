@@ -113,9 +113,6 @@ class Dataset_Builder:
         # Transform audio and resulting log-mel spectograms
         self.dataset = self.dataset.map(transform, batched=True, batch_size=self.bs, features=self.features)
 
-        # Just in case
-        self.dataset = self.dataset.with_format("torch")
-
     def _get_trans(self):
         audio_transforms = torch.nn.Sequential(
             TA.MelSpectrogram(sample_rate=16000, n_fft=self.n_fft, hop_length=self.hop_len, n_mels=self.n_mels),
