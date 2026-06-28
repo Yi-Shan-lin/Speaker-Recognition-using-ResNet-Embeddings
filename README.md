@@ -6,15 +6,19 @@ Train a speaker recognition system using speech embeddings extracted from log-Me
 ## Dataset
 VoxCeleb2
 
-Original paper: arxiv.org/pdf/1806.05622
+[Original paper](arxiv.org/pdf/1806.05622)
 
 ## Suggested starting models
 ResNet18/34 audio classification baselines
 ## Tasks
 Extract log-Mel spectrograms
+
 Fine-tune speaker classification model
+
 Extract speaker embeddings and visualize (t-SNE/UMAP)
+
 Analyze confusion between speakers
+
 ## Evaluation metrics
 Speaker identification accuracy
 ROC curves
