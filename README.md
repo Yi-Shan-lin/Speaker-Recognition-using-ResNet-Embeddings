@@ -29,3 +29,8 @@ ROC curves
 - Generated train/dev/test split metadata
 - Extracted log-Mel spectrogram features
 - Saved metadata files (CSV and JSON) in the data directory
+
+## Literature review
+[Original VoxCeleb paper](arxiv.org/pdf/1806.05622)
+[Learning noise robust ResNet-based speaker embedding for
+speaker recognition (Mohammadamini et al, 2022)] (https://hal.science/hal-03650549/)
