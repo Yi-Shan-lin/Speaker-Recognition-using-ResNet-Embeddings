@@ -35,3 +35,7 @@ ROC curves
 speaker recognition (Mohammadamini et al, 2022)](https://hal.science/hal-03650549/)
 - the authors propose two strategies to train ResNet-based speaker embeddings in order to make the speaker recognition systems more robust against additive noise and reverberation.
 - unsure yet to what extent this is helpful for us
+
+[Residual networks for text-independent speaker identification: Unleashing
+the power of residual learning (Gambhir et al, 2024)](https://tinyurl.com/44zxezex)
+- gives an overview of traditional as well as deep learning approaches for speaker identification task
