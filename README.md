@@ -6,8 +6,6 @@ Train a speaker recognition system using speech embeddings extracted from log-Me
 ## Dataset
 VoxCeleb2
 
-[Original paper](arxiv.org/pdf/1806.05622)
-
 ## Suggested starting models
 ResNet18/34 audio classification baselines
 ## Tasks
@@ -32,5 +30,8 @@ ROC curves
 
 ## Literature review
 [Original VoxCeleb paper](arxiv.org/pdf/1806.05622)
+
 [Learning noise robust ResNet-based speaker embedding for
 speaker recognition (Mohammadamini et al, 2022)] (https://hal.science/hal-03650549/)
+- the authors propose two strategies to train ResNet-based speaker embeddings in order to make the speaker recognition systems more robust against additive noise and reverberation.
+- unsure yet to what extent this is helpful for us
