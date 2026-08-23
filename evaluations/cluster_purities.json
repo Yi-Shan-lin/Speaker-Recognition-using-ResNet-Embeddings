@@ -1,0 +1,38 @@
+[
+    {
+        "model_name": "6epoch_4sec",
+        "nmi_score": 0.9699321604104586
+    },
+    {
+        "model_name": "6epoch_4sec",
+        "nmi_score": 0.9700220752539369
+    },
+    {
+        "model_name": "6epoch_4sec",
+        "nmi_score": 0.9715493353158129
+    },
+    {
+        "model_name": "3epoch_4sec",
+        "nmi_score": 0.9413708628367119
+    },
+    {
+        "model_name": "3epoch_4sec",
+        "nmi_score": 0.9525119802118232
+    },
+    {
+        "model_name": "3epoch_4sec",
+        "nmi_score": 0.9429599370093174
+    },
+    {
+        "model_name": "contrastive",
+        "nmi_score": 0.9757128592279295
+    },
+    {
+        "model_name": "contrastive",
+        "nmi_score": 0.958526320036726
+    },
+    {
+        "model_name": "contrastive",
+        "nmi_score": 0.9744060376219956
+    }
+]
